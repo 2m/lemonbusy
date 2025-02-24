@@ -1,4 +1,4 @@
-The code in this repository periodically scrapes [Lemon Gym occupancy page][] and pushes the date to [Grafana Cloud][] via [OTLP][].
+The code in this repository periodically scrapes [Lemon Gym occupancy page][] and pushes the data to [Grafana Cloud][] via [OTLP][].
 
 Scraped data can be accessed on the [publicly accessible dashboard here][].
 
