@@ -30,10 +30,12 @@ import cats.implicits.*
 import cats.syntax.all.*
 import com.themillhousegroup.scoup.Scoup
 import fs2.io.net.Network
+import org.http4s.ProductId
 import org.http4s.Request
 import org.http4s.Response
 import org.http4s.client.Client
 import org.http4s.ember.client.EmberClientBuilder
+import org.http4s.headers.`User-Agent`
 import org.http4s.implicits.*
 import org.typelevel.otel4s.Attribute
 import org.typelevel.otel4s.metrics.Gauge
@@ -74,6 +76,7 @@ def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F,
     .default[F]
     .withTimeout(Lemon.Timeout)
     .withIdleConnectionTime(Lemon.IdleTimeout)
+    .withUserAgent(`User-Agent`(ProductId("github.com/2m/lemonbusy", Some(BuildInfo.version))))
     .build
     .map(Telemetry.tracedClient)
     .use: client =>

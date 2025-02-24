@@ -59,6 +59,7 @@ lazy val backend = project
     // include some build settings into module code
     buildInfoKeys := Seq[BuildInfoKey](
       isSnapshot, // for determining which backend URL to use
+      version, // for user agent
       Test / resourceDirectory // for integration test snapshots
     ),
     buildInfoPackage := "lemonbusy",
