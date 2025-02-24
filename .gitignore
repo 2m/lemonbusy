@@ -1,0 +1,4 @@
+node_modules
+rallyeye.db*
+*.new.json
+.env

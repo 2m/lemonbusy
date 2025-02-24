@@ -1,0 +1,881 @@
+[
+{
+  "name":"[B"
+},
+{
+  "name":"[C"
+},
+{
+  "name":"[D"
+},
+{
+  "name":"[F"
+},
+{
+  "name":"[I"
+},
+{
+  "name":"[J"
+},
+{
+  "name":"[Lcats.parse.Parser0;"
+},
+{
+  "name":"[Lcats.parse.Parser;"
+},
+{
+  "name":"[Lio.opentelemetry.api.metrics.ObservableMeasurement;"
+},
+{
+  "name":"[Ljava.lang.StackTraceElement;"
+},
+{
+  "name":"[Ljava.lang.String;"
+},
+{
+  "name":"[Ljavax.management.openmbean.CompositeData;"
+},
+{
+  "name":"[Lmagnolia1.CaseClass$Param;"
+},
+{
+  "name":"[Lscala.util.Either;"
+},
+{
+  "name":"[Lsttp.tapir.SchemaType$SProductField;"
+},
+{
+  "name":"[Lsun.security.pkcs.SignerInfo;"
+},
+{
+  "name":"[S"
+},
+{
+  "name":"[Z"
+},
+{
+  "name":"apple.security.AppleProvider",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"cats.Later",
+  "fields":[{"name":"value$lzy1"}]
+},
+{
+  "name":"cats.effect.IO$",
+  "fields":[{"name":"secureRandom$lzy1"}]
+},
+{
+  "name":"cats.effect.std.Console$",
+  "fields":[{"name":"cats$effect$std$ConsoleCompanionPlatform$$stdinReader$lzy1"}]
+},
+{
+  "name":"cats.effect.std.Semaphore$impl",
+  "fields":[{"name":"Done$lzy1"}, {"name":"Wait$lzy1"}]
+},
+{
+  "name":"cats.effect.unsafe.Head",
+  "fields":[{"name":"head"}]
+},
+{
+  "name":"cats.effect.unsafe.Tail",
+  "fields":[{"name":"tailPublisher"}]
+},
+{
+  "name":"cats.effect.unsafe.metrics.ComputePoolSampler",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.ComputePoolSamplerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.CpuStarvation",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.CpuStarvationMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.LiveFiberSnapshotTrigger",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.LiveFiberSnapshotTriggerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.LocalQueueSampler",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.LocalQueueSamplerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.PollerSampler",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.PollerSamplerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.TimerHeapSampler",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.TimerHeapSamplerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.WorkerThreadSampler",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"cats.effect.unsafe.metrics.WorkerThreadSamplerMBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"cats.parse.Parser$State",
+  "fields":[{"name":"locationMap$lzy1"}]
+},
+{
+  "name":"cats.parse.Parser0",
+  "fields":[{"name":"hashCode$lzy1"}]
+},
+{
+  "name":"ch.qos.logback.classic.BasicConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.joran.SerializedModelConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.util.DefaultJoranConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.fasterxml.jackson.core.JsonFactory"
+},
+{
+  "name":"com.monovore.decline.effect.CommandIOApp",
+  "fields":[{"name":"MainThread$lzy1"}, {"name":"cats$effect$IOApp$$queue$lzy1"}]
+},
+{
+  "name":"com.sun.crypto.provider.AESCipher$General",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.ARCFOURCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.DESCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.DESedeCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.DHParameters",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.HmacCore$HmacSHA384",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.TlsMasterSecretGenerator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.management.GarbageCollectorMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.GcInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.HotSpotDiagnosticMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.ThreadMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.UnixOperatingSystemMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.VMOption",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"com.sun.management.internal.GarbageCollectorExtImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.sun.management.internal.HotSpotDiagnostic",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.sun.management.internal.HotSpotThreadImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.sun.management.internal.OperatingSystemImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.themillhousegroup.scoup.options.Wait",
+  "fields":[{"name":"0bitmap$1"}]
+},
+{
+  "name":"fs2.Chunk$",
+  "fields":[{"name":"IArraySlice$lzy1"}]
+},
+{
+  "name":"fs2.io.net.Network$",
+  "fields":[{"name":"fs2$io$net$NetworkCompanionPlatform$$globalAcg$lzy1"}, {"name":"fs2$io$net$NetworkCompanionPlatform$$globalAdsg$lzy1"}]
+},
+{
+  "name":"fs2.io.net.NetworkCompanionPlatform$$anon$1",
+  "fields":[{"name":"globalDatagramSocketGroup$lzy1"}, {"name":"globalSocketGroup$lzy1"}]
+},
+{
+  "name":"io.bullet.borer.Input$",
+  "fields":[{"name":"FromByteArrayProvider$lzy1"}, {"name":"FromByteBufferProvider$lzy1"}, {"name":"FromFileProvider$lzy1"}, {"name":"io$bullet$borer$input$FromInputStreamInput$$FromInputStreamProvider$lzy1"}]
+},
+{
+  "name":"io.bullet.borer.derivation.DerivationConfig$",
+  "fields":[{"name":"default$lzy1"}]
+},
+{
+  "name":"io.opentelemetry.api.incubator.metrics.ExtendedDefaultMeterProvider"
+},
+{
+  "name":"io.opentelemetry.api.incubator.trace.ExtendedDefaultTracerProvider"
+},
+{
+  "name":"io.opentelemetry.internal.shaded.jctools.queues.MpscArrayQueueConsumerIndexField",
+  "fields":[{"name":"consumerIndex"}]
+},
+{
+  "name":"io.opentelemetry.internal.shaded.jctools.queues.MpscArrayQueueProducerIndexField",
+  "fields":[{"name":"producerIndex"}]
+},
+{
+  "name":"io.opentelemetry.internal.shaded.jctools.queues.MpscArrayQueueProducerLimitField",
+  "fields":[{"name":"producerLimit"}]
+},
+{
+  "name":"io.opentelemetry.sdk.metrics.SdkMeterProviderBuilder",
+  "methods":[{"name":"setExemplarFilter","parameterTypes":["io.opentelemetry.sdk.metrics.internal.exemplar.ExemplarFilter"] }]
+},
+{
+  "name":"java.io.FilePermission"
+},
+{
+  "name":"java.lang.Boolean",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.Byte",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.Character",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.ClassValue"
+},
+{
+  "name":"java.lang.Deprecated",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.Double",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.Float",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.Integer",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.Long",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "name":"java.lang.Short",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.StackTraceElement",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.String",
+  "fields":[{"name":"TYPE"}, {"name":"coder"}, {"name":"value"}]
+},
+{
+  "name":"java.lang.Thread",
+  "fields":[{"name":"threadLocalRandomProbe"}],
+  "methods":[{"name":"isVirtual","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Void",
+  "fields":[{"name":"TYPE"}]
+},
+{
+  "name":"java.lang.invoke.VarHandle",
+  "methods":[{"name":"releaseFence","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.management.BufferPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.ClassLoadingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.CompilationMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.LockInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.ManagementPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"java.lang.management.MemoryMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.MemoryManagerMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.MemoryPoolMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.MemoryUsage",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.MonitorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.PlatformLoggingMXBean",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"getLoggerLevel","parameterTypes":["java.lang.String"] }, {"name":"getLoggerNames","parameterTypes":[] }, {"name":"getParentLoggerName","parameterTypes":["java.lang.String"] }, {"name":"setLoggerLevel","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.lang.management.RuntimeMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.lang.management.ThreadInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"java.math.BigDecimal"
+},
+{
+  "name":"java.math.BigInteger"
+},
+{
+  "name":"java.net.NetPermission"
+},
+{
+  "name":"java.net.SocketPermission"
+},
+{
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.security.AlgorithmParametersSpi"
+},
+{
+  "name":"java.security.AllPermission"
+},
+{
+  "name":"java.security.KeyStoreSpi"
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.security.SecurityPermission"
+},
+{
+  "name":"java.security.cert.CertStoreParameters"
+},
+{
+  "name":"java.security.interfaces.RSAPrivateKey"
+},
+{
+  "name":"java.security.interfaces.RSAPublicKey"
+},
+{
+  "name":"java.util.Date"
+},
+{
+  "name":"java.util.PropertyPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.util.concurrent.atomic.AtomicBoolean",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"java.util.concurrent.atomic.AtomicMarkableReference",
+  "fields":[{"name":"pair"}]
+},
+{
+  "name":"java.util.concurrent.atomic.AtomicReference",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"java.util.concurrent.atomic.DoubleAdder"
+},
+{
+  "name":"java.util.concurrent.atomic.LongAdder"
+},
+{
+  "name":"java.util.concurrent.atomic.Striped64",
+  "fields":[{"name":"base"}, {"name":"cellsBusy"}]
+},
+{
+  "name":"java.util.logging.LogManager",
+  "methods":[{"name":"getLoggingMXBean","parameterTypes":[] }]
+},
+{
+  "name":"java.util.logging.LoggingMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"javax.management.MBeanOperationInfo",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"getSignature","parameterTypes":[] }]
+},
+{
+  "name":"javax.management.MBeanServerBuilder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"javax.management.ObjectName"
+},
+{
+  "name":"javax.management.StandardEmitterMBean",
+  "methods":[{"name":"cacheMBeanInfo","parameterTypes":["javax.management.MBeanInfo"] }, {"name":"getCachedMBeanInfo","parameterTypes":[] }, {"name":"getMBeanInfo","parameterTypes":[] }]
+},
+{
+  "name":"javax.management.openmbean.CompositeData"
+},
+{
+  "name":"javax.management.openmbean.OpenMBeanOperationInfoSupport"
+},
+{
+  "name":"javax.management.openmbean.TabularData"
+},
+{
+  "name":"javax.security.auth.x500.X500Principal",
+  "fields":[{"name":"thisX500Name"}],
+  "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
+},
+{
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "name":"jdk.management.jfr.ConfigurationInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"jdk.management.jfr.EventTypeInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"jdk.management.jfr.FlightRecorderMXBean",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"jdk.management.jfr.FlightRecorderMXBeanImpl",
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"cacheMBeanInfo","parameterTypes":["javax.management.MBeanInfo"] }, {"name":"getCachedMBeanInfo","parameterTypes":[] }, {"name":"getMBeanInfo","parameterTypes":[] }, {"name":"getNotificationInfo","parameterTypes":[] }]
+},
+{
+  "name":"jdk.management.jfr.RecordingInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"jdk.management.jfr.SettingDescriptorInfo",
+  "queryAllPublicMethods":true
+},
+{
+  "name":"lemonbusy.TapirJsonBorer$",
+  "fields":[{"name":"given_Codec_Block$lzy1"}, {"name":"given_Codec_Data$lzy1"}]
+},
+{
+  "name":"magnolia1.CallByNeed",
+  "fields":[{"name":"value$lzy1"}]
+},
+{
+  "name":"org.http4s.Header$Raw$",
+  "fields":[{"name":"catsInstancesForHttp4sHeaderRaw$lzy1"}]
+},
+{
+  "name":"org.http4s.Headers$",
+  "fields":[{"name":"HeadersOrder$lzy1"}]
+},
+{
+  "name":"org.http4s.MediaType$",
+  "fields":[{"name":"application$divgraphql$lzy1"}, {"name":"application$lzy1"}, {"name":"application_parts$lzy1"}, {"name":"audio$lzy1"}, {"name":"chemical$lzy1"}, {"name":"font$lzy1"}, {"name":"image$lzy1"}, {"name":"message$lzy1"}, {"name":"model$lzy1"}, {"name":"multipart$lzy1"}, {"name":"text$divevent$minusstream$lzy1"}, {"name":"text$lzy1"}, {"name":"video$lzy1"}, {"name":"x_conference$lzy1"}, {"name":"x_shader$lzy1"}]
+},
+{
+  "name":"org.http4s.MimeDB$text$",
+  "fields":[{"name":"1d$minusinterleaved$minusparityfec$lzy3"}, {"name":"cache$minusmanifest$lzy1"}, {"name":"calendar$lzy1"}, {"name":"calender$lzy1"}, {"name":"cmd$lzy1"}, {"name":"coffeescript$lzy1"}, {"name":"cql$lzy1"}, {"name":"cql$minusexpression$lzy1"}, {"name":"cql$minusidentifier$lzy1"}, {"name":"css$lzy1"}, {"name":"csv$lzy1"}, {"name":"csv$minusschema$lzy1"}, {"name":"directory$lzy1"}, {"name":"dns$lzy2"}, {"name":"ecmascript$lzy2"}, {"name":"encaprtp$lzy3"}, {"name":"enriched$lzy1"}, {"name":"fhirpath$lzy1"}, {"name":"flexfec$lzy3"}, {"name":"fwdred$lzy2"}, {"name":"gff3$lzy1"}, {"name":"grammar$minusref$minuslist$lzy1"}, {"name":"html$lzy1"}, {"name":"jade$lzy1"}, {"name":"javascript$lzy2"}, {"name":"jcr$minuscnd$lzy1"}, {"name":"jsx$lzy1"}, {"name":"less$lzy1"}, {"name":"markdown$lzy1"}, {"name":"mathml$lzy1"}, {"name":"mdx$lzy1"}, {"name":"mizar$lzy1"}, {"name":"n3$lzy1"}, {"name":"parameters$lzy1"}, {"name":"parityfec$lzy3"}, {"name":"plain$lzy1"}, {"name":"provenance$minusnotation$lzy1"}, {"name":"prs$u002Efallenstein$u002Erst$lzy1"}, {"name":"prs$u002Elines$u002Etag$lzy1"}, {"name":"prs$u002Eprop$u002Elogic$lzy1"}, {"name":"raptorfec$lzy3"}, {"name":"red$lzy2"}, {"name":"rfc822$minusheaders$lzy1"}, {"name":"richtext$lzy1"}, {"name":"rtf$lzy2"}, {"name":"rtp$minusenc$minusaescm128$lzy2"}, {"name":"rtploopback$lzy3"}, {"name":"rtx$lzy3"}, {"name":"sgml$lzy2"}, {"name":"shaclc$lzy1"}, {"name":"shex$lzy1"}, {"name":"slim$lzy1"}, {"name":"spdx$lzy1"}, {"name":"strings$lzy1"}, {"name":"stylus$lzy1"}, {"name":"t140$lzy1"}, {"name":"tab$minusseparated$minusvalues$lzy1"}, {"name":"troff$lzy1"}, {"name":"turtle$lzy1"}, {"name":"ulpfec$lzy3"}, {"name":"uri$minuslist$lzy1"}, {"name":"vcard$lzy1"}, {"name":"vnd$u002Ea$lzy1"}, {"name":"vnd$u002Eabc$lzy1"}, {"name":"vnd$u002Eascii$minusart$lzy1"}, {"name":"vnd$u002Ecurl$lzy2"}, {"name":"vnd$u002Ecurl$u002Edcurl$lzy1"}, {"name":"vnd$u002Ecurl$u002Emcurl$lzy1"}, {"name":"vnd$u002Ecurl$u002Escurl$lzy1"}, {"name":"vnd$u002Edebian$u002Ecopyright$lzy1"}, {"name":"vnd$u002Edmclientscript$lzy1"}, {"name":"vnd$u002Edvb$u002Esubtitle$lzy2"}, {"name":"vnd$u002Eesmertec$u002Etheme$minusdescriptor$lzy1"}, {"name":"vnd$u002Eficlab$u002Eflt$lzy1"}, {"name":"vnd$u002Efly$lzy1"}, {"name":"vnd$u002Efmi$u002Eflexstor$lzy1"}, {"name":"vnd$u002Egml$lzy1"}, {"name":"vnd$u002Egraphviz$lzy1"}, {"name":"vnd$u002Ehans$lzy1"}, {"name":"vnd$u002Ehgl$lzy1"}, {"name":"vnd$u002Ein3d$u002E3dml$lzy1"}, {"name":"vnd$u002Ein3d$u002Espot$lzy1"}, {"name":"vnd$u002Eiptc$u002Enewsml$lzy1"}, {"name":"vnd$u002Eiptc$u002Enitf$lzy1"}, {"name":"vnd$u002Elatex$minusz$lzy1"}, {"name":"vnd$u002Emotorola$u002Ereflex$lzy1"}, {"name":"vnd$u002Ems$minusmediapackage$lzy1"}, {"name":"vnd$u002Enet2phone$u002Ecommcenter$u002Ecommand$lzy1"}, {"name":"vnd$u002Eradisys$u002Emsml$minusbasic$minuslayout$lzy1"}, {"name":"vnd$u002Esenx$u002Ewarpscript$lzy1"}, {"name":"vnd$u002Esi$u002Euricatalogue$lzy1"}, {"name":"vnd$u002Esosi$lzy1"}, {"name":"vnd$u002Esun$u002Ej2me$u002Eapp$minusdescriptor$lzy1"}, {"name":"vnd$u002Etrolltech$u002Elinguist$lzy1"}, {"name":"vnd$u002Ewap$u002Esi$lzy1"}, {"name":"vnd$u002Ewap$u002Esl$lzy1"}, {"name":"vnd$u002Ewap$u002Ewml$lzy1"}, {"name":"vnd$u002Ewap$u002Ewmlscript$lzy1"}, {"name":"vtt$lzy1"}, {"name":"x$minusasm$lzy1"}, {"name":"x$minusc$lzy1"}, {"name":"x$minuscomponent$lzy1"}, {"name":"x$minusfortran$lzy1"}, {"name":"x$minusgwt$minusrpc$lzy1"}, {"name":"x$minushandlebars$minustemplate$lzy1"}, {"name":"x$minusjava$minussource$lzy1"}, {"name":"x$minusjquery$minustmpl$lzy1"}, {"name":"x$minuslua$lzy1"}, {"name":"x$minusmarkdown$lzy1"}, {"name":"x$minusnfo$lzy1"}, {"name":"x$minusopml$lzy1"}, {"name":"x$minusorg$lzy1"}, {"name":"x$minuspascal$lzy1"}, {"name":"x$minusprocessing$lzy1"}, {"name":"x$minussass$lzy1"}, {"name":"x$minusscss$lzy1"}, {"name":"x$minussetext$lzy1"}, {"name":"x$minussfv$lzy1"}, {"name":"x$minussuse$minusymp$lzy1"}, {"name":"x$minusuuencode$lzy1"}, {"name":"x$minusvcalendar$lzy1"}, {"name":"x$minusvcard$lzy1"}, {"name":"xml$lzy2"}, {"name":"xml$minusexternal$minusparsed$minusentity$lzy2"}, {"name":"yaml$lzy1"}]
+},
+{
+  "name":"org.http4s.Platform$",
+  "fields":[{"name":"loggerFactory$lzy1"}]
+},
+{
+  "name":"org.http4s.Query",
+  "fields":[{"name":"multiParams$lzy1"}, {"name":"params$lzy1"}]
+},
+{
+  "name":"org.http4s.Query$",
+  "fields":[{"name":"parser$lzy1"}]
+},
+{
+  "name":"org.http4s.QueryParamEncoder$",
+  "fields":[{"name":"booleanQueryParamEncoder$lzy1"}, {"name":"doubleQueryParamEncoder$lzy1"}, {"name":"floatQueryParamEncoder$lzy1"}, {"name":"intQueryParamEncoder$lzy1"}, {"name":"longQueryParamEncoder$lzy1"}, {"name":"period$lzy2"}, {"name":"shortQueryParamEncoder$lzy1"}, {"name":"stringQueryParamEncoder$lzy1"}, {"name":"uriQueryParamEncoder$lzy1"}, {"name":"zoneId$lzy2"}]
+},
+{
+  "name":"org.http4s.QueryParameterValue$",
+  "fields":[{"name":"hashInstance$lzy2"}, {"name":"orderInstance$lzy2"}, {"name":"showInstance$lzy2"}]
+},
+{
+  "name":"org.http4s.Request",
+  "fields":[{"name":"$1$$lzy1"}]
+},
+{
+  "name":"org.http4s.Uri",
+  "fields":[{"name":"renderString$lzy1"}]
+},
+{
+  "name":"org.http4s.Uri$",
+  "fields":[{"name":"SkipEncodeInPath$lzy1"}, {"name":"toSkip$lzy1"}]
+},
+{
+  "name":"org.http4s.Uri$Path$",
+  "fields":[{"name":"Asterisk$lzy1"}]
+},
+{
+  "name":"org.http4s.internal.parsing.CommonRules$",
+  "fields":[{"name":"comment$lzy1"}]
+},
+{
+  "name":"org.http4s.otel4s.middleware.TypedAttributes$Headers$",
+  "fields":[{"name":"defaultAllowedHeaders$lzy1"}]
+},
+{
+  "name":"org.http4s.util.Renderer$",
+  "fields":[{"name":"RFC7231InstantRenderer$lzy1"}]
+},
+{
+  "name":"org.typelevel.ci.package$CIStringSyntax",
+  "fields":[{"name":"ci$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.instrumentation.ce.IORuntimeMetrics$",
+  "fields":[{"name":"Config$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.instrumentation.ce.IORuntimeMetricsPlatform$Config$",
+  "fields":[{"name":"CpuStarvationConfig$lzy1"}, {"name":"WorkStealingThreadPoolConfig$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.instrumentation.ce.IORuntimeMetricsPlatform$Config$WorkStealingThreadPoolConfig$",
+  "fields":[{"name":"ComputeConfig$lzy1"}, {"name":"WorkerThreadsConfig$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.instrumentation.ce.IORuntimeMetricsPlatform$Config$WorkStealingThreadPoolConfig$WorkerThreadsConfig$",
+  "fields":[{"name":"LocalQueueConfig$lzy1"}, {"name":"PollerConfig$lzy1"}, {"name":"ThreadConfig$lzy1"}, {"name":"TimerHeapConfig$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.oteljava.context.Context$",
+  "fields":[{"name":"root$lzy1"}]
+},
+{
+  "name":"org.typelevel.otel4s.trace.TraceState$MapBasedTraceState",
+  "fields":[{"name":"asMap$lzy1"}]
+},
+{
+  "name":"scodec.bits.BitVector",
+  "fields":[{"name":"hashCode$lzy1"}]
+},
+{
+  "name":"scodec.bits.ByteVector",
+  "fields":[{"name":"hashCode$lzy1"}]
+},
+{
+  "name":"sttp.model.Header$",
+  "fields":[{"name":"GMT$lzy1"}, {"name":"Rfc850DatetimeFormat$lzy1"}]
+},
+{
+  "name":"sttp.model.MediaType",
+  "fields":[{"name":"hashCode$lzy1"}, {"name":"toStringCache$lzy1"}]
+},
+{
+  "name":"sttp.tapir.Codec$",
+  "fields":[{"name":"path$lzy1"}]
+},
+{
+  "name":"sttp.tapir.Endpoint",
+  "fields":[{"name":"method$lzy1"}, {"name":"show$lzy1"}, {"name":"showDetail$lzy1"}, {"name":"showShort$lzy1"}]
+},
+{
+  "name":"sttp.tapir.internal.package$ParamsAsAny",
+  "fields":[{"name":"asVector$lzy1"}]
+},
+{
+  "name":"sttp.tapir.internal.package$ParamsAsVector",
+  "fields":[{"name":"asAny$lzy1"}]
+},
+{
+  "name":"sttp.tapir.package$",
+  "fields":[{"name":"NoTrailingSlash$lzy1"}, {"name":"filesGetEndpoint$lzy1"}, {"name":"resourcesGetEndpoint$lzy1"}, {"name":"sttp$tapir$static$TapirStaticContentEndpoints$$staticHeadEndpoint$lzy1"}]
+},
+{
+  "name":"sun.management.ClassLoadingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.CompilationImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.ManagementFactoryHelper$1",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.ManagementFactoryHelper$PlatformLoggingImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.MemoryImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.MemoryManagerImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.MemoryPoolImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.management.RuntimeImpl",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"sun.misc.Signal",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }, {"name":"handle","parameterTypes":["sun.misc.Signal","sun.misc.SignalHandler"] }]
+},
+{
+  "name":"sun.misc.SignalHandler"
+},
+{
+  "name":"sun.misc.Unsafe",
+  "fields":[{"name":"theUnsafe"}],
+  "methods":[{"name":"getAndAddLong","parameterTypes":["java.lang.Object","long","long"] }, {"name":"getAndSetObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.DSA$SHA224withDSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.DSA$SHA256withDSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.JavaKeyStore$DualFormatJKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.JavaKeyStore$JKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA224",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA5$SHA384",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA5$SHA512",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.X509Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.certpath.CollectionCertStore",
+  "methods":[{"name":"<init>","parameterTypes":["java.security.cert.CertStoreParameters"] }]
+},
+{
+  "name":"sun.security.provider.certpath.PKIXCertPathValidator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.certpath.SunCertPathBuilder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.PSSParameters",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSAKeyFactory$Legacy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSAPSSSignature",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSASignature$SHA224withRSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSASignature$SHA256withRSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSASignature$SHA384withRSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.SSLContextImpl$DefaultSSLContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.SSLContextImpl$TLSContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.util.ObjectIdentifier"
+},
+{
+  "name":"sun.security.x509.AuthorityInfoAccessExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.BasicConstraintsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.CRLDistributionPointsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.CertificateExtensions"
+},
+{
+  "name":"sun.security.x509.CertificatePoliciesExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.ExtendedKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.IssuerAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.KeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.NetscapeCertTypeExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.PrivateKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.SubjectAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.SubjectKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+}
+]

@@ -1,0 +1,20 @@
+# fly.toml app configuration file generated for lemonbusy on 2025-02-24T22:02:56+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'lemonbusy'
+primary_region = 'waw'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+
+[experimental]
+  auto_rollback = true
+
+[build]
+  image = 'registry.fly.io/lemonbusy:latest'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
