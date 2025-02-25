@@ -20,6 +20,6 @@ auto_rollback = true
 image = 'registry.fly.io/lemonbusy:latest'
 
 [[vm]]
-memory = '512mb'
+memory = '256mb'
 cpu_kind = 'shared'
 cpus = 1
