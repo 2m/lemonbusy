@@ -16,6 +16,8 @@
 
 package lemonbusy
 
+import java.util.concurrent.TimeoutException
+
 import scala.concurrent.duration.*
 import scala.jdk.CollectionConverters.*
 import scala.util.Try
@@ -65,11 +67,24 @@ case class Data(content: String, success: Boolean)
 
 def renderBlock[F[_]: Async]() =
   Http4sClientInterpreter[F]()
-    .toRequestThrowDecodeFailures(Lemon.renderEndpoint, Some(Lemon.Uri))(
+    .toRequest(Lemon.renderEndpoint, Some(Lemon.Uri))(
       "MTI2NQ==",
       "YWNmL2NsdWJzLW9jY3VwYW5jeQ==",
       "lt"
     )
+
+enum AppError:
+  case Decode[T](decodeResult: DecodeResult[T])
+  case Upstream(upstreamError: String)
+  case Parse(parseError: Throwable)
+  case Timeout(timeoutError: Throwable)
+
+def handleError[F[_]: Async: Tracer: Meter](appError: Gauge[F, Long])(result: Either[AppError, Unit]) =
+  result match
+    case Left(error) =>
+      appError.record(1, List(Attribute("error", error.toString))) >> Async[F].delay(println(error))
+    case Right(_) =>
+      appError.record(0)
 
 def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F, Unit] =
   EmberClientBuilder
@@ -92,21 +107,26 @@ def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F,
             .gauge[Long]("lemonbusy.latency")
             .withDescription("Occupancy endpoint latency in seconds")
             .create
-        _ <- foreverIfSmoke(smoke)(fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value)
+        appErrorGauge <-
+          Meter[F]
+            .gauge[Long]("lemonbusy.app_error")
+            .withDescription("Application error")
+            .create
+        _ <- foreverIf(!smoke)(
+          fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value
+            .flatMap(handleError(appErrorGauge))
+        )
       yield ()
     .toResource
 
-def foreverIfSmoke[F[_]: Async, T](smoke: Boolean)(f: F[T]) =
-  if !smoke then
-    (f >> Temporal[F].sleep(
-      Lemon.IdleTimeout * 2
-    )).foreverM
+def foreverIf[F[_]: Async, T](forever: Boolean)(f: F[T]) =
+  if forever then (f >> Temporal[F].sleep(Lemon.IdleTimeout * 2)).foreverM
   else f
 
 def fetchAndRecord[F[_]: Async: Tracer](
     client: Client[F],
     request: Request[F],
-    parseResponse: Response[F] => F[Either[String, Block]],
+    parseResponse: Response[F] => F[DecodeResult[Either[String, Block]]],
     occupoancyGauge: Gauge[F, Long],
     latencyGauge: Gauge[F, Long]
 ) =
@@ -114,10 +134,16 @@ def fetchAndRecord[F[_]: Async: Tracer](
     (tookMs, response) <- EitherT(
       client
         .run(request)
-        .use(parseResponse(_))
-        .map(_.left.map(_ => Error("Unable to parse response")))
+        .use(
+          parseResponse(_).map:
+            case DecodeResult.Value(Right(value)) => Right(value)
+            case DecodeResult.Value(Left(error))  => Left(AppError.Upstream(error))
+            case other                            => Left(AppError.Decode(other))
+        )
+        .recover:
+          case err: TimeoutException => Left(AppError.Timeout(err))
     ).timed
-    info <- EitherT.fromEither(Try(parseOccupancy(response)).toEither)
+    info <- EitherT.fromEither(Try(parseOccupancy(response)).toEither.left.map(AppError.Parse.apply))
     _ <- EitherT.right(latencyGauge.record(tookMs.toSeconds, List.empty))
     _ <- EitherT.right(info.toList.traverse: (name, occupancy) =>
       occupoancyGauge.record(occupancy, List(Attribute("club", name))))
