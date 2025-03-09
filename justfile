@@ -24,3 +24,6 @@ docker-login:
 
 telemetry:
   cd telemetry; docker-compose up
+
+logs:
+  cd modules/backend; flyctl logs

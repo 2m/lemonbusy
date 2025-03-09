@@ -5,7 +5,7 @@ Scraped data can be accessed on the [publicly accessible dashboard here][].
 [lemon gym occupancy page]: https://www.lemongym.lt/klubu-uzimtumas/
 [Grafana Cloud]: https://grafana.com/products/cloud/
 [OTLP]: https://grafana.com/docs/grafana-cloud/send-data/otlp/
-[publicly accessible dashboard here]: https://dvim.grafana.net/public-dashboards/f86b6ec8bfea4dee8d3149b9857a5b1c?from=now-1h&to=now&timezone=browser
+[publicly accessible dashboard here]: https://dvim.grafana.net/public-dashboards/f86b6ec8bfea4dee8d3149b9857a5b1c
 
 ## Notice to Lemon Gym sys admins
 
