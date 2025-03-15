@@ -28,7 +28,6 @@ import cats.effect.kernel.Async
 import cats.effect.kernel.Resource
 import cats.effect.kernel.Temporal
 import cats.effect.syntax.all.*
-import cats.implicits.*
 import cats.syntax.all.*
 import com.themillhousegroup.scoup.Scoup
 import fs2.io.net.Network
