@@ -25,7 +25,7 @@ lazy val backend = project
       "com.softwaremill.sttp.tapir" %% "tapir-http4s-client"                       % "1.11.15",
       "org.http4s"                  %% "http4s-ember-client"                       % "0.23.30",
       "org.http4s"                  %% "http4s-otel4s-middleware-trace-client"     % "0.10.0",
-      "ch.qos.logback"               % "logback-classic"                           % "1.5.16",
+      "ch.qos.logback"               % "logback-classic"                           % "1.5.17",
       "com.monovore"                %% "decline-effect"                            % "2.5.0",
       "com.themillhousegroup"       %% "scoup"                                     % "1.0.0",
       "io.bullet"                   %% "borer-derivation"                          % "1.15.0",
