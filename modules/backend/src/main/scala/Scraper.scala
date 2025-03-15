@@ -41,6 +41,7 @@ import org.http4s.implicits.*
 import org.typelevel.otel4s.Attribute
 import org.typelevel.otel4s.metrics.Gauge
 import org.typelevel.otel4s.metrics.Meter
+import org.typelevel.otel4s.trace.StatusCode
 import org.typelevel.otel4s.trace.Tracer
 import sttp.tapir.*
 import sttp.tapir.client.http4s.Http4sClientInterpreter
@@ -72,18 +73,20 @@ def renderBlock[F[_]: Async]() =
       "lt"
     )
 
-enum AppError:
+enum AppError extends Throwable:
   case Decode[T](decodeResult: DecodeResult[T])
   case Upstream(upstreamError: String)
   case Parse(parseError: Throwable)
   case Timeout(timeoutError: Throwable)
+  case Generic(error: Throwable)
 
-def handleError[F[_]: Async: Tracer: Meter](appError: Gauge[F, Long])(result: Either[AppError, Unit]) =
-  result match
-    case Left(error) =>
-      appError.record(1, List(Attribute("error", error.toString))) >> Async[F].delay(println(error))
-    case Right(_) =>
-      appError.record(0)
+def handleError[F[_]: Async: Tracer: Meter](result: Either[AppError, Unit]) =
+  Tracer[F].currentSpanOrNoop.flatMap: span =>
+    result match
+      case Left(error) =>
+        span.setStatus(StatusCode.Error) >> span.recordException(error) >> Async[F].delay(println(error))
+      case Right(_) =>
+        span.setStatus(StatusCode.Ok)
 
 def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F, Unit] =
   EmberClientBuilder
@@ -106,14 +109,13 @@ def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F,
             .gauge[Long]("lemonbusy.latency")
             .withDescription("Occupancy endpoint latency in seconds")
             .create
-        appErrorGauge <-
-          Meter[F]
-            .gauge[Long]("lemonbusy.app_error")
-            .withDescription("Application error")
-            .create
         _ <- foreverIf(!smoke)(
-          fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value
-            .flatMap(handleError(appErrorGauge))
+          Tracer[F]
+            .rootSpan("scrape")
+            .surround(
+              fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value
+                .flatMap(handleError)
+            )
         )
       yield ()
     .toResource
@@ -141,6 +143,7 @@ def fetchAndRecord[F[_]: Async: Tracer](
         )
         .recover:
           case err: TimeoutException => Left(AppError.Timeout(err))
+          case err                   => Left(AppError.Generic(err))
     ).timed
     info <- EitherT.fromEither(Try(parseOccupancy(response)).toEither.left.map(AppError.Parse.apply))
     _ <- EitherT.right(latencyGauge.record(tookMs.toSeconds, List.empty))

@@ -283,6 +283,9 @@
   "fields":[{"name":"producerLimit"}]
 },
 {
+  "name":"io.opentelemetry.sdk.extension.incubator.fileconfig.DeclarativeConfiguration"
+},
+{
   "name":"io.opentelemetry.sdk.metrics.SdkMeterProviderBuilder",
   "methods":[{"name":"setExemplarFilter","parameterTypes":["io.opentelemetry.sdk.metrics.internal.exemplar.ExemplarFilter"] }]
 },
