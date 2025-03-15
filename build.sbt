@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.6.3"
+ThisBuild / scalaVersion := "3.6.4"
 ThisBuild / scalafmtOnCompile := true
 
 ThisBuild / organization := "lt.dvim.lemonbusy"
@@ -22,17 +22,17 @@ lazy val backend = project
   .settings(
     inConfig(Integration)(Defaults.testTasks),
     libraryDependencies ++= Seq(
-      "com.softwaremill.sttp.tapir" %% "tapir-http4s-client"                       % "1.11.15",
+      "com.softwaremill.sttp.tapir" %% "tapir-http4s-client"                       % "1.11.19",
       "org.http4s"                  %% "http4s-ember-client"                       % "0.23.30",
       "org.http4s"                  %% "http4s-otel4s-middleware-trace-client"     % "0.10.0",
-      "ch.qos.logback"               % "logback-classic"                           % "1.5.16",
+      "ch.qos.logback"               % "logback-classic"                           % "1.5.17",
       "com.monovore"                %% "decline-effect"                            % "2.5.0",
       "com.themillhousegroup"       %% "scoup"                                     % "1.0.0",
       "io.bullet"                   %% "borer-derivation"                          % "1.15.0",
       "org.typelevel"               %% "log4cats-core"                             % "2.7.0",
       "org.typelevel"               %% "log4cats-slf4j"                            % "2.7.0",
-      "org.typelevel"               %% "otel4s-oteljava"                           % "0.12.0-RC2",
-      "org.typelevel"               %% "otel4s-instrumentation-metrics"            % "0.12.0-RC2",
+      "org.typelevel"               %% "otel4s-oteljava"                           % "0.12.0-RC3",
+      "org.typelevel"               %% "otel4s-instrumentation-metrics"            % "0.12.0-RC3",
       "io.opentelemetry"             % "opentelemetry-exporter-otlp"               % "1.48.0",
       "io.opentelemetry"             % "opentelemetry-sdk-extension-autoconfigure" % "1.48.0",
       "org.scalameta"               %% "munit"                                     % "1.1.0" % Test,
