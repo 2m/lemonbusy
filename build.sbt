@@ -28,7 +28,7 @@ lazy val backend = project
       "ch.qos.logback"               % "logback-classic"                           % "1.5.17",
       "com.monovore"                %% "decline-effect"                            % "2.5.0",
       "com.themillhousegroup"       %% "scoup"                                     % "1.0.0",
-      "io.bullet"                   %% "borer-derivation"                          % "1.15.0",
+      "io.bullet"                   %% "borer-derivation"                          % "1.16.0",
       "org.typelevel"               %% "log4cats-core"                             % "2.7.0",
       "org.typelevel"               %% "log4cats-slf4j"                            % "2.7.0",
       "org.typelevel"               %% "otel4s-oteljava"                           % "0.12.0-RC3",
