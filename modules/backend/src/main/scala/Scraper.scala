@@ -43,6 +43,7 @@ import org.typelevel.otel4s.metrics.Gauge
 import org.typelevel.otel4s.metrics.Meter
 import org.typelevel.otel4s.trace.StatusCode
 import org.typelevel.otel4s.trace.Tracer
+import org.typelevel.otel4s.trace.TracerProvider
 import sttp.tapir.*
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import sttp.tapir.generic.auto.*
@@ -88,7 +89,7 @@ def handleError[F[_]: Async: Tracer](result: Either[AppError, Unit]) =
       case Right(_) =>
         span.setStatus(StatusCode.Ok)
 
-def runScraper[F[_]: Async: Tracer: Meter: Network](smoke: Boolean): Resource[F, Unit] =
+def runScraper[F[_]: Async: TracerProvider: Tracer: Meter: Network](smoke: Boolean): Resource[F, Unit] =
   EmberClientBuilder
     .default[F]
     .withTimeout(Lemon.Timeout)
