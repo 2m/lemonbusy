@@ -80,7 +80,7 @@ enum AppError extends Throwable:
   case Timeout(timeoutError: Throwable)
   case Generic(error: Throwable)
 
-def handleError[F[_]: Async: Tracer: Meter](result: Either[AppError, Unit]) =
+def handleError[F[_]: Async: Tracer](result: Either[AppError, Unit]) =
   Tracer[F].currentSpanOrNoop.flatMap: span =>
     result match
       case Left(error) =>
@@ -124,7 +124,7 @@ def foreverIf[F[_]: Async, T](forever: Boolean)(f: F[T]) =
   if forever then (f >> Temporal[F].sleep(Lemon.IdleTimeout * 2)).foreverM
   else f
 
-def fetchAndRecord[F[_]: Async: Tracer](
+def fetchAndRecord[F[_]: Async](
     client: Client[F],
     request: Request[F],
     parseResponse: Response[F] => F[DecodeResult[Either[String, Block]]],
