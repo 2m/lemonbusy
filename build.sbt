@@ -33,8 +33,8 @@ lazy val backend = project
       "org.typelevel"               %% "log4cats-slf4j"                            % "2.7.1",
       "org.typelevel"               %% "otel4s-oteljava"                           % "0.12.0",
       "org.typelevel"               %% "otel4s-instrumentation-metrics"            % "0.12.0",
-      "io.opentelemetry"             % "opentelemetry-exporter-otlp"               % "1.50.0",
-      "io.opentelemetry"             % "opentelemetry-sdk-extension-autoconfigure" % "1.50.0",
+      "io.opentelemetry"             % "opentelemetry-exporter-otlp"               % "1.51.0",
+      "io.opentelemetry"             % "opentelemetry-sdk-extension-autoconfigure" % "1.51.0",
       "org.scalameta"               %% "munit"                                     % "1.1.1" % Test,
       "org.typelevel"               %% "munit-cats-effect"                         % "2.1.0" % Test,
       "com.github.jatcwang"         %% "difflicious-munit"                         % "0.4.3" % Test
