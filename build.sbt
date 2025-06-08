@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.7.0"
+ThisBuild / scalaVersion := "3.7.1"
 ThisBuild / scalafmtOnCompile := true
 
 ThisBuild / organization := "lt.dvim.lemonbusy"
