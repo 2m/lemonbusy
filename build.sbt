@@ -22,7 +22,7 @@ lazy val backend = project
   .settings(
     inConfig(Integration)(Defaults.testTasks),
     libraryDependencies ++= Seq(
-      "com.softwaremill.sttp.tapir" %% "tapir-http4s-client"                       % "1.11.33",
+      "com.softwaremill.sttp.tapir" %% "tapir-http4s-client"                       % "1.11.34",
       "org.http4s"                  %% "http4s-ember-client"                       % "0.23.30",
       "org.http4s"                  %% "http4s-otel4s-middleware-trace-client"     % "0.10.0",
       "ch.qos.logback"               % "logback-classic"                           % "1.5.18",
