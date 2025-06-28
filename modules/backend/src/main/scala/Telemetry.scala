@@ -22,15 +22,17 @@ import cats.effect.Concurrent
 import cats.effect.IO
 import cats.effect.LiftIO
 import cats.effect.kernel.Async
-import cats.effect.kernel.Concurrent
 import cats.effect.kernel.Resource
 import cats.effect.kernel.Sync
 import cats.effect.syntax.all.*
 import cats.effect.unsafe.IORuntime
 import cats.implicits.*
+import org.http4s.Uri
+import org.http4s.otel4s.middleware.client.UriTemplateClassifier
 import org.http4s.otel4s.middleware.trace.client.ClientMiddleware
 import org.http4s.otel4s.middleware.trace.client.ClientSpanDataProvider
 import org.http4s.otel4s.middleware.trace.client.UriRedactor
+import org.http4s.otel4s.middleware.trace.redact.HeaderRedactor
 import org.typelevel.otel4s.Attribute
 import org.typelevel.otel4s.instrumentation.ce.IORuntimeMetrics
 import org.typelevel.otel4s.metrics.Meter
@@ -43,11 +45,14 @@ import org.typelevel.otel4s.trace.TracerProvider
 object Telemetry:
   final val App = "lemonbusy"
 
-  private def globalOtel[F[_]: Async: LiftIO](environment: String) = OtelJava.autoConfigured[F]: builder =>
+  enum Environment:
+    case Local, Production
+
+  private def globalOtel[F[_]: Async: LiftIO](environment: Environment) = OtelJava.autoConfigured[F]: builder =>
     builder.addPropertiesSupplier(() =>
       (Map(
         "otel.java.global-autoconfigure.enabled" -> "true",
-        "otel.service.name" -> s"$App-$environment"
+        "otel.service.name" -> s"$App-${environment.toString.toLowerCase}"
       ) ++ sys.env
         .get("EXPORTER_ENDPOINT")
         .fold(Map())(endpoint => Map("otel.exporter.otlp.endpoint" -> endpoint))
@@ -59,11 +64,11 @@ object Telemetry:
           .fold(Map())(protocol => Map("otel.exporter.otlp.protocol" -> protocol))).asJava
     )
 
-  private def serviceName = if BuildInfo.isSnapshot then "local" else "production"
+  private def serviceEnvironment = if BuildInfo.isSnapshot then Environment.Local else Environment.Production
 
-  def instruments(service: String) =
+  def instruments(environment: Environment) =
     for
-      otel <- globalOtel[IO](service)
+      otel <- globalOtel[IO](environment)
       provider = otel.tracerProvider
       tracer <- provider.get(App).toResource
       (given MeterProvider[IO]) = otel.meterProvider
@@ -73,14 +78,24 @@ object Telemetry:
 
   def instrument[A](entry: (TracerProvider[IO], Tracer[IO], Meter[IO]) ?=> Resource[IO, A]) =
     for
-      (given TracerProvider[IO], given Tracer[IO], given Meter[IO]) <- instruments(serviceName)
+      (given TracerProvider[IO], given Tracer[IO], given Meter[IO]) <- instruments(serviceEnvironment)
       results <- entry
     yield results
 
-  def tracedClient[F[_]: TracerProvider, Concurrent] = ClientMiddleware
-    .builder(ClientSpanDataProvider.openTelemetry(new UriRedactor.OnlyRedactUserInfo {}))
-    // .withClientSpanName(req => s"${req.method} ${req.uri}")
+  def tracedClient[F[_]: TracerProvider: Concurrent] = ClientMiddleware
+    .builder(
+      ClientSpanDataProvider
+        .openTelemetry(new UriRedactor.OnlyRedactUserInfo {})
+        .withUrlTemplateClassifier(
+          new UriTemplateClassifier:
+            override def classify(uri: Uri): Option[String] = Some(uri.path.toString)
+        )
+        .optIntoHttpResponseHeaders(HeaderRedactor.default)
+        .optIntoUrlScheme
+        .optIntoUrlTemplate
+    )
     .build
+    .toResource
 
 extension [A, F[_]: Tracer](f: F[A])
   def traced(name: String, attributes: Attribute[?]*): F[A] = Tracer[F].span(name, attributes).surround(f)

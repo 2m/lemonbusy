@@ -90,36 +90,39 @@ def handleError[F[_]: Async: Tracer](result: Either[AppError, Unit]) =
         span.setStatus(StatusCode.Ok)
 
 def runScraper[F[_]: Async: TracerProvider: Tracer: Meter: Network](smoke: Boolean): Resource[F, Unit] =
-  EmberClientBuilder
-    .default[F]
-    .withTimeout(Lemon.Timeout)
-    .withIdleConnectionTime(Lemon.IdleTimeout)
-    .withUserAgent(`User-Agent`(ProductId("github.com/2m/lemonbusy", Some(BuildInfo.version))))
-    .build
-    .map(Telemetry.tracedClient)
-    .use: client =>
-      val (request, parseResponse) = renderBlock()
-      for
-        occupoancyGauge <-
-          Meter[F]
-            .gauge[Long]("lemonbusy.occupancy")
-            .withDescription("Occupancy in percentage")
-            .create
-        latencyGauge <-
-          Meter[F]
-            .gauge[Long]("lemonbusy.latency")
-            .withDescription("Occupancy endpoint latency in seconds")
-            .create
-        _ <- foreverIf(!smoke)(
-          Tracer[F]
-            .rootSpan("scrape")
-            .surround(
-              fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value
-                .flatMap(handleError)
-            )
-        )
-      yield ()
-    .toResource
+  for
+    clientMiddleware <- Telemetry.tracedClient[F]
+    client <- EmberClientBuilder
+      .default[F]
+      .withTimeout(Lemon.Timeout)
+      .withIdleConnectionTime(Lemon.IdleTimeout)
+      .withUserAgent(`User-Agent`(ProductId("github.com/2m/lemonbusy", Some(BuildInfo.version))))
+      .build
+      .map(clientMiddleware.wrap)
+      .use: client =>
+        val (request, parseResponse) = renderBlock()
+        for
+          occupoancyGauge <-
+            Meter[F]
+              .gauge[Long]("lemonbusy.occupancy")
+              .withDescription("Occupancy in percentage")
+              .create
+          latencyGauge <-
+            Meter[F]
+              .gauge[Long]("lemonbusy.latency")
+              .withDescription("Occupancy endpoint latency in seconds")
+              .create
+          _ <- foreverIf(!smoke)(
+            Tracer[F]
+              .rootSpan("scrape")
+              .surround(
+                fetchAndRecord(client, request, parseResponse, occupoancyGauge, latencyGauge).value
+                  .flatMap(handleError)
+              )
+          )
+        yield ()
+      .toResource
+  yield ()
 
 def foreverIf[F[_]: Async, T](forever: Boolean)(f: F[T]) =
   if forever then (f >> Temporal[F].sleep(Lemon.IdleTimeout * 2)).foreverM
