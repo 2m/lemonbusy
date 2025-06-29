@@ -9,7 +9,7 @@ permissions:
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'github-actions[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'scala-steward-2m[bot]'
     steps:
     - run: gh pr review --approve "$PR_URL"
       env:
