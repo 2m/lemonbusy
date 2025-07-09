@@ -16,7 +16,7 @@
 
 package lemonbusy
 
-import java.nio.file.Files
+import scala.io.Source
 
 import TapirJsonBorer.given
 import io.bullet.borer.Json
@@ -47,8 +47,6 @@ class ParserSuite extends munit.FunSuite:
 object ParserSuite:
   def getBlockResponse() =
     Json
-      .decode(
-        Files.readString(BuildInfo.test_resourceDirectory.toPath().resolve("response.json")).getBytes
-      )
+      .decode(Source.fromURL(getClass.getResource("/response.json")).mkString.getBytes)
       .to[Block]
       .value

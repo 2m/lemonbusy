@@ -64,7 +64,8 @@ object Telemetry:
           .fold(Map())(protocol => Map("otel.exporter.otlp.protocol" -> protocol))).asJava
     )
 
-  private def serviceEnvironment = if BuildInfo.isSnapshot then Environment.Local else Environment.Production
+  private def serviceEnvironment =
+    BuildInfo.isSnapshot.toBooleanOption.fold(Environment.Local)(_ => Environment.Production)
 
   def instruments(environment: Environment) =
     for
