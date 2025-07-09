@@ -5,19 +5,16 @@ deploy-backend:
   cd modules/backend; flyctl deploy
 
 scrape:
-  sbt --client backend/run scraper
+  ./mill modules.backend.runLocal scraper
 
 smoke:
-  sbt --client backend/run smoke-run
-
-smoke-with-agent:
-  sbt --client backend/nativeImageRunAgent \" smoke-run\"
+  ./mill modules.backend.runLocal smoke-run
 
 native-image:
-  sbt --client backend/nativeImage
+  ./mill modules.backend.nativeImage
 
 run-native-image:
-  modules/backend/target/native-image/backend scraper
+  out/modules/backend/nativeImage.dest/native-executable scraper
 
 docker-login:
   cd modules/backend; fly auth token | docker login registry.fly.io --username=x --password-stdin

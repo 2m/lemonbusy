@@ -9,15 +9,14 @@ import org.typelevel.scalacoptions.*
 import scalalib.*
 
 object modules extends Module:
-  object backend extends SbtModule, BuildInfo:
+  object backend extends SbtModule, BuildInfo, NativeImageModule:
     def scalaVersion = "3.7.1"
 
-    override def scalacOptions = Task {
+    override def scalacOptions = Task:
       super.scalacOptions() ++
         ScalacOptions.defaultTokensForVersion(
           ScalaVersion.unsafeFromString(scalaVersion())
         )
-    }
 
     def mvnDeps = Seq(
       mvn"com.softwaremill.sttp.tapir::tapir-http4s-client:1.11.35",
@@ -41,9 +40,17 @@ object modules extends Module:
       BuildInfo.Value("isSnapshot", "true")
     )
 
-    override def resources = Task {
+    override def resources = Task:
       super.resources()
-    }
+
+    def nativeImageOptions = Seq(
+      "--verbose",
+      "--no-fallback", // show the underlying problem due to unsupported features instead of building a fallback image
+      "-march=compatibility", // Use most compatible instructions, 'native' fails to start on flyio
+      "--enable-url-protocols=https" // for OpenTelemetry export to honeycomb
+    )
+
+    def jvmId = "graalvm-community:23.0.1"
 
     object test extends SbtTests with TestModule.Munit:
       def mvnDeps = Seq(
