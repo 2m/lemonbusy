@@ -5,10 +5,10 @@ deploy-backend:
   cd modules/backend; flyctl deploy
 
 scrape:
-  ./mill modules.backend.runLocal scraper
+  ./mill modules.backend.run scraper
 
 smoke:
-  ./mill modules.backend.runLocal smoke-run
+  ./mill modules.backend.run smoke-run
 
 native-image:
   ./mill modules.backend.nativeImage
