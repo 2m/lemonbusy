@@ -1,10 +1,13 @@
-//| mvnDeps: ["org.typelevel::scalac-options:0.1.8", "com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION"]
+//| mill-version: 1.0.0
+//| mvnDeps:
+//| - org.typelevel::scalac-options:0.1.8
+//| - com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION
 
 package build
 
 import mill.*
 import mill.contrib.buildinfo.BuildInfo
-import mill.vcs.VcsVersion
+import mill.util.VcsVersion
 import org.typelevel.scalacoptions.*
 import scalalib.*
 

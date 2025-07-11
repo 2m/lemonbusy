@@ -25,7 +25,8 @@ import com.monovore.decline.effect.CommandIOApp
 object Main
     extends CommandIOApp(
       name = "lemonbusy",
-      header = "Availability scraper for certain Lemon gym"
+      header = "Availability scraper for certain Lemon gym",
+      version = BuildInfo.version
     ):
 
   case class Scraper()
