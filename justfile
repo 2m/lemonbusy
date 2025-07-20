@@ -1,5 +1,14 @@
+check-fmt:
+  ./mill mill.scalalib.scalafmt/checkFormatAll
+
+test:
+  ./mill modules.backend.test
+
 build-backend:
-  sbt --client backend/dockerBuildAndPush
+  docker build . -t registry.fly.io/lemonbusy:latest
+
+push-backend:
+  docker push registry.fly.io/lemonbusy:latest
 
 deploy-backend:
   cd modules/backend; flyctl deploy
