@@ -22,7 +22,7 @@ object modules extends Module:
         )
 
     def mvnDeps = Seq(
-      mvn"com.softwaremill.sttp.tapir::tapir-http4s-client:1.11.35",
+      mvn"com.softwaremill.sttp.tapir::tapir-http4s-client:1.11.37",
       mvn"org.http4s::http4s-ember-client:0.23.30",
       mvn"org.http4s::http4s-otel4s-middleware-trace-client:0.13.0",
       mvn"ch.qos.logback:logback-classic:1.5.18",
@@ -31,10 +31,9 @@ object modules extends Module:
       mvn"io.bullet::borer-derivation:1.16.1",
       mvn"org.typelevel::log4cats-core:2.7.1",
       mvn"org.typelevel::log4cats-slf4j:2.7.1",
-      mvn"org.typelevel::otel4s-oteljava:0.13.0",
-      mvn"org.typelevel::otel4s-instrumentation-metrics:0.13.0",
-      mvn"io.opentelemetry:opentelemetry-exporter-otlp:1.51.0",
-      mvn"io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.51.0"
+      mvn"org.typelevel::otel4s-sdk:0.13.1",
+      mvn"org.typelevel::otel4s-sdk-exporter:0.13.1",
+      mvn"org.typelevel::otel4s-instrumentation-metrics:0.13.0"
     )
 
     val buildInfoPackageName = "lemonbusy"

@@ -16,12 +16,9 @@
 
 package lemonbusy
 
-import scala.jdk.CollectionConverters.*
-
 import cats.effect.Concurrent
 import cats.effect.IO
 import cats.effect.LiftIO
-import cats.effect.kernel.Async
 import cats.effect.kernel.Resource
 import cats.effect.kernel.Sync
 import cats.effect.syntax.all.*
@@ -37,49 +34,51 @@ import org.typelevel.otel4s.Attribute
 import org.typelevel.otel4s.instrumentation.ce.IORuntimeMetrics
 import org.typelevel.otel4s.metrics.Meter
 import org.typelevel.otel4s.metrics.MeterProvider
-import org.typelevel.otel4s.oteljava.OtelJava
-import org.typelevel.otel4s.oteljava.context.Context
+import org.typelevel.otel4s.sdk.OpenTelemetrySdk
+import org.typelevel.otel4s.sdk.exporter.otlp.autoconfigure.OtlpExportersAutoConfigure
 import org.typelevel.otel4s.trace.Tracer
 import org.typelevel.otel4s.trace.TracerProvider
 
 object Telemetry:
   final val App = "lemonbusy"
 
-  enum Environment:
-    case Local, Production
+  private def telemetryProperties(config: Main.Config): Map[String, String] =
+    config.telemetry match
+      case Main.Config.Telemetry.Remote(endpoint, headers, protocol) =>
+        Map(
+          "otel.metrics.exporter" -> "otlp",
+          "otel.traces.exporter" -> "otlp",
+          "otel.exporter.otlp.endpoint" -> endpoint,
+          "otel.exporter.otlp.headers" -> headers.getOrElse(""),
+          "otel.exporter.otlp.protocol" -> protocol
+        )
+      case Main.Config.Telemetry.Console() =>
+        Map(
+          "otel.metrics.exporter" -> "console",
+          "otel.traces.exporter" -> "console"
+        )
 
-  private def globalOtel[F[_]: Async: LiftIO](environment: Environment) = OtelJava.autoConfigured[F]: builder =>
-    builder.addPropertiesSupplier(() =>
-      (Map(
-        "otel.java.global-autoconfigure.enabled" -> "true",
-        "otel.service.name" -> s"$App-${environment.toString.toLowerCase}"
-      ) ++ sys.env
-        .get("EXPORTER_ENDPOINT")
-        .fold(Map())(endpoint => Map("otel.exporter.otlp.endpoint" -> endpoint))
-        ++ sys.env
-          .get("EXPORTER_HEADERS")
-          .fold(Map())(headers => Map("otel.exporter.otlp.headers" -> headers))
-        ++ sys.env
-          .get("EXPORTER_PROTOCOL")
-          .fold(Map())(protocol => Map("otel.exporter.otlp.protocol" -> protocol))).asJava
-    )
+  private def globalOtel(config: Main.Config) = OpenTelemetrySdk.autoConfigured[IO]: builder =>
+    builder
+      .addExportersConfigurer(OtlpExportersAutoConfigure[IO])
+      .addPropertiesLoader(
+        Map("otel.service.name" -> s"$App-${if config.production then "production" else "local"}").pure[IO]
+      )
+      .addPropertiesLoader(telemetryProperties(config).pure[IO])
 
-  private def serviceEnvironment =
-    BuildInfo.isSnapshot.toBooleanOption.fold(Environment.Local)(_ => Environment.Production)
-
-  def instruments(environment: Environment) =
+  def instruments(config: Main.Config) =
     for
-      otel <- globalOtel[IO](environment)
-      provider = otel.tracerProvider
+      otel <- globalOtel(config)
+      provider = otel.sdk.tracerProvider
       tracer <- provider.get(App).toResource
-      (given MeterProvider[IO]) = otel.meterProvider
+      (given MeterProvider[IO]) = otel.sdk.meterProvider
       meter <- summon[MeterProvider[IO]].get(App).toResource
       _ <- IORuntimeMetrics.register[IO](IORuntime.global.metrics, IORuntimeMetrics.Config.default)
     yield (provider, tracer, meter)
 
-  def instrument[A](entry: (TracerProvider[IO], Tracer[IO], Meter[IO]) ?=> Resource[IO, A]) =
+  def instrument[A](config: Main.Config, entry: (TracerProvider[IO], Tracer[IO], Meter[IO]) ?=> Resource[IO, A]) =
     for
-      (given TracerProvider[IO], given Tracer[IO], given Meter[IO]) <- instruments(serviceEnvironment)
+      (given TracerProvider[IO], given Tracer[IO], given Meter[IO]) <- instruments(config)
       results <- entry
     yield results
 
