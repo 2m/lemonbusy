@@ -9,7 +9,7 @@ kill_signal = 'SIGINT'
 kill_timeout = '5s'
 
 [processes]
-scraper = "/lemonbusy scraper --exporter-endpoint=$EXPORTER_ENDPOINT --exporter-protocol=$EXPORTER_PROTOCOL --exporter-headers=$EXPORTER_HEADERS"
+scraper = "/lemonbusy scraper --production --exporter-endpoint=$EXPORTER_ENDPOINT --exporter-protocol=$EXPORTER_PROTOCOL --exporter-headers=$EXPORTER_HEADERS"
 
 [experimental]
 auto_rollback = true
