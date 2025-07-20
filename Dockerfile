@@ -5,5 +5,3 @@ RUN apk add gcompat \
   && apk cache clean
 
 COPY out/modules/backend/nativeImage.dest/native-executable /lemonbusy
-
-ENTRYPOINT ["/lemonbusy"]
