@@ -1,0 +1,62 @@
+//| mill-version: 1.0.1
+//| mvnDeps:
+//| - org.typelevel::scalac-options:0.1.8
+//| - com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION
+
+package build
+
+import mill.*
+import mill.contrib.buildinfo.BuildInfo
+import mill.util.VcsVersion
+import org.typelevel.scalacoptions.*
+import scalalib.*
+
+object modules extends Module:
+  object backend extends SbtModule, BuildInfo, NativeImageModule:
+    def scalaVersion = "3.7.1"
+
+    override def scalacOptions = Task:
+      super.scalacOptions() ++
+        ScalacOptions.defaultTokensForVersion(
+          ScalaVersion.unsafeFromString(scalaVersion())
+        )
+
+    def mvnDeps = Seq(
+      mvn"com.softwaremill.sttp.tapir::tapir-http4s-client:1.11.37",
+      mvn"org.http4s::http4s-ember-client:0.23.30",
+      mvn"org.http4s::http4s-otel4s-middleware-trace-client:0.13.0",
+      mvn"ch.qos.logback:logback-classic:1.5.18",
+      mvn"com.monovore::decline-effect:2.5.0",
+      mvn"com.themillhousegroup::scoup:1.0.0",
+      mvn"io.bullet::borer-derivation:1.16.1",
+      mvn"org.typelevel::log4cats-core:2.7.1",
+      mvn"org.typelevel::log4cats-slf4j:2.7.1",
+      mvn"org.typelevel::otel4s-sdk:0.13.1",
+      mvn"org.typelevel::otel4s-sdk-exporter:0.13.1",
+      mvn"org.typelevel::otel4s-instrumentation-metrics:0.13.0"
+    )
+
+    val buildInfoPackageName = "lemonbusy"
+    def buildInfoMembers = Seq(
+      BuildInfo.Value("version", VcsVersion.calcVcsState(Task.log).format()),
+      BuildInfo.Value("isSnapshot", "true")
+    )
+
+    override def resources = Task:
+      super.resources()
+
+    def nativeImageOptions = Seq(
+      "--verbose",
+      "--no-fallback", // show the underlying problem due to unsupported features instead of building a fallback image
+      "-march=compatibility", // Use most compatible instructions, 'native' fails to start on flyio
+      "--enable-url-protocols=https" // for OpenTelemetry export to honeycomb
+    )
+
+    def jvmId = "graalvm-community:23.0.1"
+
+    object test extends SbtTests with TestModule.Munit:
+      def mvnDeps = Seq(
+        mvn"org.scalameta::munit:1.1.1",
+        mvn"org.typelevel::munit-cats-effect:2.1.0",
+        mvn"com.github.jatcwang::difflicious-munit:0.4.3"
+      )

@@ -30,8 +30,6 @@ jobs:
       with:
         distribution: temurin
         java-version: 17
-        cache: sbt
-    - uses: sbt/setup-sbt@v1
 
     - uses: docker/login-action@v3.4.0
       with:
@@ -39,7 +37,9 @@ jobs:
         username: x
         password: ${{ secrets.FLY_AUTH_TOKEN }}
 
+    - run: just native-image
     - run: just build-backend
+    - run: just push-backend
 
     - uses: superfly/flyctl-actions/setup-flyctl@master
     - run: just deploy-backend

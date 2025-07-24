@@ -25,10 +25,6 @@ jobs:
       with:
         distribution: temurin
         java-version: 17
-        cache: sbt
-    - uses: sbt/setup-sbt@v1
 
-    - run: sbt --client scalafmtCheckAll
-    - run: sbt --client scalafmtSbtCheck
-    - run: sbt --client headerCheckAll
-    - run: sbt --client test
+    - run: just check-fmt
+    - run: just test

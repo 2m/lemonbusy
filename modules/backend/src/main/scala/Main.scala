@@ -25,25 +25,44 @@ import com.monovore.decline.effect.CommandIOApp
 object Main
     extends CommandIOApp(
       name = "lemonbusy",
-      header = "Availability scraper for certain Lemon gym"
+      header = "Availability scraper for certain Lemon gym",
+      version = BuildInfo.version
     ):
 
-  case class Scraper()
-  case class SmokeRun()
+  case class Config(production: Boolean, telemetry: Config.Telemetry)
+  object Config:
+    sealed trait Telemetry
+    object Telemetry:
+      val endpoint = Opts.option[String]("exporter-endpoint", "")
+      val headers = Opts.option[String]("exporter-headers", "")
+      val protocol = Opts.option[String]("exporter-protocol", "")
+
+      case class Remote(endpoint: String, headers: Option[String], protocol: String) extends Telemetry
+      case class Console() extends Telemetry
+
+      val opts = (endpoint, headers.orNone, protocol).mapN(Remote.apply).withDefault(Console())
+
+    val production = Opts.flag("production", "").orFalse
+    val opts = (production, Telemetry.opts).mapN(Config.apply)
+
+  case class Scraper(config: Config)
+  case class SmokeRun(config: Config)
 
   val scraper: Opts[Scraper] =
     Opts.subcommand("scraper", "Runs availability scraper.") {
-      Opts.unit.map(_ => Scraper())
+      Config.opts.map(Scraper.apply)
     }
 
   val smokeRun: Opts[SmokeRun] =
     Opts.subcommand("smoke-run", "Exercice all functionality of the app.") {
-      Opts.unit.map(_ => SmokeRun())
+      Config.opts.map(SmokeRun.apply)
     }
 
   override def main: Opts[IO[ExitCode]] =
     (scraper orElse smokeRun)
       .map {
-        case Scraper()  => Telemetry.instrument(runScraper[IO](smoke = false)).use(_ => IO.never)
-        case SmokeRun() => Telemetry.instrument(runScraper[IO](smoke = true)).use(_ => ExitCode.Success.pure[IO])
+        case Scraper(config) =>
+          Telemetry.instrument(config, runScraper[IO](smoke = false)).use(_ => IO.never)
+        case SmokeRun(config) =>
+          Telemetry.instrument(config, runScraper[IO](smoke = true)).use(_ => ExitCode.Success.pure[IO])
       }
