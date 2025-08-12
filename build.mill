@@ -1,4 +1,4 @@
-//| mill-version: 1.0.1
+//| mill-version: 1.0.3
 //| mvnDeps:
 //| - org.typelevel::scalac-options:0.1.8
 //| - com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION
