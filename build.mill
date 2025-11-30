@@ -1,4 +1,4 @@
-//| mill-version: 1.0.3
+//| mill-version: 1.0.6
 //| mvnDeps:
 //| - org.typelevel::scalac-options:0.1.8
 //| - com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION
@@ -31,8 +31,8 @@ object modules extends Module:
       mvn"io.bullet::borer-derivation:1.16.2",
       mvn"org.typelevel::log4cats-core:2.7.1",
       mvn"org.typelevel::log4cats-slf4j:2.7.1",
-      mvn"org.typelevel::otel4s-sdk:0.13.2",
-      mvn"org.typelevel::otel4s-sdk-exporter:0.13.2",
+      mvn"org.typelevel::otel4s-sdk:0.14.0",
+      mvn"org.typelevel::otel4s-sdk-exporter:0.14.0",
       mvn"org.typelevel::otel4s-instrumentation-metrics:0.14.0"
     )
 
