@@ -28,3 +28,20 @@ jobs:
 
     - run: just check-fmt
     - run: just test
+
+  smoke-run:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v5
+    - uses: extractions/setup-just@v3
+
+    - uses: actions/setup-java@v5
+      with:
+        distribution: temurin
+        java-version: 17
+
+    - run: just smoke
+    - run: just native-image
+    - run: just smoke-native-image

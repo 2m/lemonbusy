@@ -19,6 +19,9 @@ scrape:
 smoke:
   ./mill modules.backend.run smoke-run
 
+smoke-native-image:
+  out/modules/backend/nativeImage.dest/native-executable smoke-run
+
 smoke-grafana-local:
   ./mill modules.backend.run smoke-run \
     --exporter-endpoint="http://localhost:4318" \
