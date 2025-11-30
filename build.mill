@@ -24,7 +24,7 @@ object modules extends Module:
     def mvnDeps = Seq(
       mvn"com.softwaremill.sttp.tapir::tapir-http4s-client:1.12.5",
       mvn"org.http4s::http4s-ember-client:0.23.30",
-      mvn"org.http4s::http4s-otel4s-middleware-trace-client:0.13.0",
+      mvn"org.http4s::http4s-otel4s-middleware-trace-client:0.15.0",
       mvn"ch.qos.logback:logback-classic:1.5.21",
       mvn"com.monovore::decline-effect:2.5.0",
       mvn"com.themillhousegroup::scoup:1.0.0",
