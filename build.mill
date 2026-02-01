@@ -56,7 +56,7 @@ object modules extends Module:
 
     object test extends SbtTests with TestModule.Munit:
       def mvnDeps = Seq(
-        mvn"org.scalameta::munit:1.2.1",
+        mvn"org.scalameta::munit:1.2.2",
         mvn"org.typelevel::munit-cats-effect:2.1.0",
         mvn"com.github.jatcwang::difflicious-munit:0.4.4"
       )
