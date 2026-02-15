@@ -31,8 +31,8 @@ object modules extends Module:
       mvn"io.bullet::borer-derivation:1.16.2",
       mvn"org.typelevel::log4cats-core:2.7.1",
       mvn"org.typelevel::log4cats-slf4j:2.7.1",
-      mvn"org.typelevel::otel4s-sdk:0.16.0",
-      mvn"org.typelevel::otel4s-sdk-exporter:0.16.0",
+      mvn"org.typelevel::otel4s-sdk:0.16.1",
+      mvn"org.typelevel::otel4s-sdk-exporter:0.16.1",
       mvn"org.typelevel::otel4s-instrumentation-metrics:0.15.1"
     )
 
