@@ -13,7 +13,7 @@ import scalalib.*
 
 object modules extends Module:
   object backend extends SbtModule, BuildInfo, NativeImageModule:
-    def scalaVersion = "3.8.1"
+    def scalaVersion = "3.8.2"
 
     override def scalacOptions = Task:
       super.scalacOptions() ++
