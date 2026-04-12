@@ -33,7 +33,7 @@ object modules extends Module:
       mvn"org.typelevel::log4cats-slf4j:2.8.0",
       mvn"org.typelevel::otel4s-sdk:0.17.0",
       mvn"org.typelevel::otel4s-sdk-exporter:0.17.0",
-      mvn"org.typelevel::otel4s-instrumentation-metrics:0.15.2"
+      mvn"org.typelevel::otel4s-instrumentation-metrics:0.16.0"
     )
 
     val buildInfoPackageName = "lemonbusy"
