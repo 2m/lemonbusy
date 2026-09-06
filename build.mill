@@ -28,7 +28,7 @@ object modules extends Module:
       mvn"ch.qos.logback:logback-classic:1.5.38",
       mvn"com.monovore::decline-effect:2.6.2",
       mvn"com.themillhousegroup::scoup:1.0.0",
-      mvn"io.bullet::borer-derivation:1.16.2",
+      mvn"io.bullet::borer-derivation:1.18.0",
       mvn"org.typelevel::log4cats-core:2.8.0",
       mvn"org.typelevel::log4cats-slf4j:2.8.0",
       mvn"org.typelevel::otel4s-sdk:0.18.0",
